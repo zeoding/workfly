@@ -1,0 +1,76 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+   <link href="http://cdn.grapecity.com/spreadjs/hosted/css/gc.spread.sheets.excel2013white.16.0.0.css" rel="stylesheet"
+        type="text/css" />
+    
+    <script src="http://cdn.grapecity.com/spreadjs/hosted/scripts/gc.spread.sheets.all.16.0.0.min.js"></script>
+    <script src="https://cdn.grapecity.com.cn/spreadjs/scripts/jquery-1.11.1.min.js" type="text/javascript"></script>
+     <style>
+
+    .sample-tutorial {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    </style>
+</head>
+<body>
+<div class="sample-tutorial">
+    <div id="ss" style="margin:0 auto; width:1450px;height:500px;border:1px solid black;"></div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        var spread = new GC.Spread.Sheets.Workbook(document.getElementById("ss"), { sheetCount: 1 });
+        GC.Spread.Common.CultureManager.culture("zh-cn");
+        var sheet = spread.getActiveSheet();	
+		sheet.options.isProtected = true;
+        sheet.setRowCount(10);
+		sheet.options.protectionOptions = {
+			allowSelectLockedCells:true,
+			allowSelectUnlockedCells:true,
+			allowFilter: true,
+			allowSort: false,
+			allowResizeRows: true,
+			allowResizeColumns: false,
+			allowEditObjects: false,
+			allowDragInsertRows: false,
+			allowDragInsertColumns: false,
+			allowInsertRows: false,
+			allowInsertColumns: false,
+			allowDeleteRows: false,
+			allowDeleteColumns: false,
+			allowOutlineColumns: false,
+			allowOutlineRows: false
+		}
+		/*
+        *  通过继承ContextMenu的方式自定义右键菜单逻辑
+        * */
+        function ContextMenu(){}
+        ContextMenu.prototype = new GC.Spread.Sheets.ContextMenu.ContextMenu(spread);
+debugger
+        /*
+        * onOpenMenu是右键菜单弹出前触发的事件，可以用来自定义右键菜单项
+        * itemsDataForShown 是本次右键单击弹出的右键菜单项
+        * */
+        ContextMenu.prototype.onOpenMenu = function (menuData, itemsDataForShown, hitInfo, spread) {
+						console.log('onOpenMenuonOpenMenuonOpenMenuonOpenMenuonOpenMenuonOpenMenu')
+                        for(let i=0; i<itemsDataForShown.length; i++){
+                                var item = itemsDataForShown[i];
+                                if(item.name === "gc.spread.hideRows"){
+                                        item.disable = false;
+                                }else if(item.name === "gc.spread.unhideRows"){
+                                        item.disable = false;
+                                }
+                        }
+        };
+                spread.contextMenu = new ContextMenu();
+
+		
+    });
+
+</script>
+</body>
+</html>

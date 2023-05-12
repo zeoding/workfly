@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function scrolla(id) {
+      document.querySelector(".container").scrollTop = document.querySelector(
+        ".id" + id
+      ).offsetTop;
+    }
+  </script>
+  <body>
+    <ul>
+      <li onclick="scrolla('1')">1</li>
+      <li onclick="scrolla('2')">2</li>
+      <li onclick="scrolla('3')">3</li>
+      <li onclick="scrolla('4')">4</li>
+      <li onclick="scrolla('5')">5</li>
+      <li onclick="scrolla('6')">6</li>
+    </ul>
+    <div class="container">
+      <div class="child">
+        <div class="item id1">1</div>
+        <div class="item id2">12</div>
+        <div class="item id3">13</div>
+        <div class="item id4">14</div>
+        <div class="item id5">15</div>
+        <div class="item id6">16</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  ul {
+    display: flex;
+  }
+  ul li {
+    width: 50px;
+    text-align: center;
+    list-style: none;
+  }
+  .container {
+    height: 500px;
+    border: 1px solid #000;
+    overflow: scroll;
+  }
+  .child {
+    line-height: 500px;
+    text-align: center;
+  }
+  .item {
+    height: 500px;
+    background: pink;
+  }
+</style>

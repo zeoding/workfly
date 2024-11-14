@@ -1,0 +1,89 @@
+.el-tooltip__popper {
+  position: absolute;
+  border-radius: 4px;
+  padding: 10px;
+  z-index: 2000;
+  font-size: 12px;
+  line-height: 1.2;
+  min-width: 10px;
+  word-wrap: break-word;
+}
+
+.el-tooltip__popper.is-dark {
+  background: #303133;
+  color: #fff;
+}
+
+.el-tooltip__popper.is-light {
+  background: #fff;
+  border: 1px solid #303133;
+  color: #303133;
+}
+
+/* 箭头基础样式 */
+.el-tooltip__arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  visibility: hidden;
+}
+
+.el-tooltip__arrow::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  content: '';
+  transform: rotate(45deg);
+  visibility: visible;
+}
+
+/* 深色主题箭头边框 */
+.el-tooltip__popper.is-dark .el-tooltip__arrow::before {
+  background: #303133;
+}
+
+/* 浅色主题箭头边框 */
+.el-tooltip__popper.is-light .el-tooltip__arrow::before {
+  background: #fff;
+  border: 1px solid #303133;
+}
+
+/* 箭头位置 */
+.el-tooltip__popper[data-popper-placement^='top'] .el-tooltip__arrow {
+  bottom: -4px;
+}
+
+.el-tooltip__popper[data-popper-placement^='bottom'] .el-tooltip__arrow {
+  top: -4px;
+}
+
+.el-tooltip__popper[data-popper-placement^='left'] .el-tooltip__arrow {
+  right: -4px;
+}
+
+.el-tooltip__popper[data-popper-placement^='right'] .el-tooltip__arrow {
+  left: -4px;
+}
+
+/* 浅色主题特殊处理 */
+.el-tooltip__popper.is-light[data-popper-placement^='top'] .el-tooltip__arrow::before {
+  border-top: none;
+  border-left: none;
+}
+
+.el-tooltip__popper.is-light[data-popper-placement^='bottom'] .el-tooltip__arrow::before {
+  border-bottom: none;
+  border-right: none;
+}
+
+.el-tooltip__popper.is-light[data-popper-placement^='left'] .el-tooltip__arrow::before {
+  border-bottom: none;
+  border-left: none;
+}
+
+.el-tooltip__popper.is-light[data-popper-placement^='right'] .el-tooltip__arrow::before {
+  border-top: none;
+  border-right: none;
+}
